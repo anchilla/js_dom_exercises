@@ -15,13 +15,14 @@
 <body>
 
 <div id="nav" class="navbar" style="width: 100%">
+    <div class="ul_div">
     <ul>
         <li><a href="#" class="linklist navbar_about">About us</a></li>
         <li><a href="#" class="linklist">Contact</a></li>
-
     </ul>
+</div>
 
-    <div id="ham_button" class="hamburger" onclick="myHamburger();return false;" >My work</div>
+    <div id="ham_button"  ><p class="hamburger" onclick="myHamburger();return false;" >My work</p></div>
 
 </div>
 
@@ -38,6 +39,14 @@
     </div>
   </div>
 
+<div class="our_list"> 
+<ul>
+    <li>Nas tim</li>
+    <li>Nasi proizvodi</li>
+    <li>Kako poruciti</li>
+    <li>Dodatna pitanja</li>
+</ul>
+</div>
 
 <script type="text/javascript">
     
@@ -87,19 +96,22 @@ document.addEventListener("mouseup", function mouseClick(event){
         var y = document.getElementById("hamb_proj");
         var z = document.getElementById("ham_button");
      console.log("window listener");
-     console.log(event.target);
-     console.log(event.target.getAttribute("id"));//ovo radi, mogla si i ovako
+     console.log("parent: "+event.target.parentNode);
+     console.log("id: "+event.target.getAttribute("id"));//ovo radi, mogla si i ovako
      //parentNode radi zato sto elemet koji zapravo kliknes je neki manji u 
      // nekom divu, i ono sto vrati je razlicito od x, y, z jer su i oni 
      //zapravo objekti
         if( x.style.display = "block" && event.target.parentNode != x 
-           && event.target.parentNode  != y && event.target.parentNode  != z)
+           && event.target.parentNode  != y && event.target.parentNode != z)
             {x.style.display = "none";
     }
     //console.log("JSON: "+JSON.stringify(event.target.parentNode));
 
     }) 
 
+//zaklucak: parentNode ima smisla stavljati ako su mi event target ugnjezdeni,
+//tj. nalaze se u necemu. Ako ne, on ta metoda nece funkcionisati. I parentNode
+//je properti, a ne metoda.
 </script>
 
 </body>

@@ -2,6 +2,7 @@ body{
 	background-color: #F5F5F5;
 	margin: 0;
 	padding: 0;
+	height: 1000px;
 	font-family: sans-serif;
 
 }
@@ -9,6 +10,8 @@ body{
 	margin: 0;
 	padding: 0;
 }
+p{margin-bottom: 0;
+	}
 
 .navbar{
 	padding: 0px;
@@ -17,23 +20,27 @@ body{
 	-webkit-box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.30);
 	-moz-box-shadow:0 6px 8px 0 rgba(0, 0, 0, 0.30);
 	
-	position: relative;
+	position: sticky;
+	top: 0;
 	background: #cc6699;
+	text-align: center;
 }
-
+.ul_div{
+	text-align: center;
+	display: inline-block;
+		width: 90%;
+		text-align: center;
+		margin-left: 30px;
+}
 .navbar ul{
 	list-style: none;
 	padding-left: 0;
 	margin: 0;
 	text-align: left;
-	width: 90%;
+	display: inline-block;
 	height: 44px;
-	
 }
 
-.navbar .contact{
-	display: none;
-}
 
 .navbar li{
 	display: inline-block;
@@ -49,30 +56,37 @@ body{
 	font-size: 21px;
 	height: 44px;
 	text-align: center;
+	cursor: pointer;
 }
 
 .navbar .linklist:hover{
-	background: #9679ec;
+	color: #47476b;
 }
 
-.navbar .hamburger{
+.navbar #ham_button{
 	position: absolute;
 	right: 40px;
 		padding: 5px;
 	text-align: center;
-	font-size: 21px;
-	right: 40px; 
-height: 44px;
-	color: #efeff5;
+	font-size: 21px; 
 
+	color: #efeff5;
+cursor: pointer;
+}
+.hamnurger{
+	padding-top: 10px;
+	margin-bottom:0;
 }
 .hamburger i:hover{
 	color: #bf80ff;
 }
-
-.intro_div{
-	position: relative;
+.ham_lista{
+	position: sticky;
+	top: 44px;
 }
+/*.intro_div{
+	position: relative;
+}*/
 .intro_div #myHamb{
 	background: #e6b3cc;
 	color:#47476b;
@@ -102,4 +116,18 @@ height: 44px;
 	text-decoration: none;
 	color: #47476b;
 	padding: 3px 0;
+}
+.our_list{
+	width: 99%;
+	text-align: center;
+	padding-top: 30px;
+}
+.our_list ul{
+
+	font-size: 20px;
+	display: inline-block;
+	text-align: left;
+		border: solid gray;
+	border-radius: 10px;
+	padding-right: 5px;
 }
