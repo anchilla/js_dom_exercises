@@ -9,10 +9,22 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="index.css">
- 
+ <script src="jquery-3.6.0.js"></script>
 </head>
 
 <body>
+
+<div class="side_menu" id="side_bar">
+    <div id="side_close" class="close_button"><i class="fa fa-times-circle" aria-hidden="true" onclick="closeSide()"></i></div>
+        <ul class="side_menu_ul" id="side_ul">
+        <li><a href="#" class="link_ham">React project</a></li>
+    <li><a href="#" class="link_ham">Javascript project</a></li>
+    <li><a href="#" class="link_ham">Java roject</a></li>
+     <li><a href="#" class="link_ham">Android app</a></li>
+</ul>
+
+</div>
+
 
 <div id="nav" class="navbar" style="width: 100%">
     <div class="ul_div">
@@ -22,9 +34,10 @@
     </ul>
 </div>
 
-    <div id="ham_button"  ><p class="hamburger" onclick="myHamburger();return false;" >My work</p></div>
+    <div id="ham_button"  ><p class="hamburger" onclick="myHamburger();return false;" >Menu</p></div>
 
 </div>
+
 
 <div class="intro_div ham_lista">
 
@@ -48,8 +61,85 @@
 </ul>
 </div>
 
-<script type="text/javascript">
+<div class="open_sidebar">
+    <button type="button" onclick="openSide()" class="open_button">More info</button>
+</div>
+
+<div class="test_rel">
+<p>Neki text</p>
+<p>Drugi text</p>
+<p>Treci text</p>
+    </div>
+
+<div class="slika_div">
     
+   <img class="slika_animate" src="maca_mase.JPG"> 
+</div>
+
+<!-- nacin da se divovi stave jedan pored drugog - stave se u parent div i stavi im se float na istu stranu(left) i odredi width.
+Moze i da se parentu stavi text aligny - center, a deci display - inline block -->
+<div class="big_div">
+
+<div class="forms">
+<form action="" id="loginForm" class="form">
+  <h1>Login</h1>
+  <input type="text" id="username" class="form_control" placeholder="Enter your Username...">
+  <input type="password" id="password" class="form_control" placeholder="Enter your Password...">
+  <button type="button" onclick="showPassword()">Submit</button>
+</form>
+
+<div>
+    <p id="p_password"></p>
+</div>
+</div>
+
+<!--label se koristi za prosirenje polja koje treba da se klikne, da ne
+bude samo mali krug za radio button-->
+<div class="forms">
+<form action="" class="form">
+  <input type="radio" id="html" name="fav_language" value="HTML">
+  <label for="html">HTML</label><br>
+  <input type="radio" id="css" name="fav_language" value="CSS">
+  <label for="css">CSS</label><br>
+  <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+  <label for="javascript">JavaScript</label><br><br>
+  <input type="button" value="Submit" onclick="showSelected()">
+</form>
+
+<div>
+    <p id="p_select"></p>
+</div>
+</div>
+
+<!--nes sa jquerry, animation, simple -->
+<div class="img_animation">
+<img src="images.jfif" class="img_hello">
+<button type="button" class="animate_img">Animate image</button>
+</div>
+
+</div>
+
+<script type="text/javascript">
+    const side_bar= document.getElementById("side_bar");
+    const side_button=document.getElementById("side_close");
+    const side_list=document.getElementById("side_ul");
+
+function openSide(){
+    //side_bar.style.display = "block";
+    side_bar.style.width = "250px"
+    side_bar.style.padding = "7px";
+    side_button.style.display = "block";
+    side_list.style.display = "block";
+}
+
+function closeSide(){
+    //side_bar.style.display = "none";
+    side_bar.style.width = "0";
+    side_bar.style.padding = "0";
+    side_button.style.display = "none";
+    side_list.style.display = "none";
+}
+
 function myHamburger() {
 
 /*
@@ -95,9 +185,9 @@ document.addEventListener("mouseup", function mouseClick(event){
         var x = document.getElementById("myHamb");
         var y = document.getElementById("hamb_proj");
         var z = document.getElementById("ham_button");
-     console.log("window listener");
-     console.log("parent: "+event.target.parentNode);
-     console.log("id: "+event.target.getAttribute("id"));//ovo radi, mogla si i ovako
+    // console.log("window listener");
+     //console.log("parent: "+event.target.parentNode);
+//console.log("id: "+event.target.getAttribute("id"));//ovo radi, mogla si i //ovako
      //parentNode radi zato sto elemet koji zapravo kliknes je neki manji u 
      // nekom divu, i ono sto vrati je razlicito od x, y, z jer su i oni 
      //zapravo objekti
@@ -107,11 +197,57 @@ document.addEventListener("mouseup", function mouseClick(event){
     }
     //console.log("JSON: "+JSON.stringify(event.target.parentNode));
 
-    }) 
-
+    })
 //zaklucak: parentNode ima smisla stavljati ako su mi event target ugnjezdeni,
 //tj. nalaze se u necemu. Ako ne, on ta metoda nece funkcionisati. I parentNode
-//je properti, a ne metoda.
+//je properti (koji je objekat, tj. element), a ne metoda. 
+
+//ovo su css metode, mora zagrada za rotate, translateY...
+//u jquery svi propertiji sa - moraju se pisati zajedno s drugim vel slovom
+// i zarezi su izmedju vrednosti propertija
+    $(function(){
+        console.log("ready");
+    $(".slika_animate").css({transform: "translateX(20px) rotate(360deg)",
+        transitionDuration: "1s",
+        margin: "20px"
+    });
+    }
+    );
+
+    const pass= document.getElementById("password");
+    const user= document.getElementById("username");
+    const parag = document.getElementById("p_password");
+    const html=document.getElementById("html");
+    const css=document.getElementById("css");
+    const js=document.getElementById("javascript");
+    const parag_sel=document.getElementById("p_select");
+
+function showPassword(){
+    parag.innerHTML = "Your password is: "+ pass.value +", username is: "+user.value;
+}
+
+function showSelected() {
+    
+    /*querySelector - ova metoda uzima bilo koji zeljeni selektor. prihvata bilo koji jquery 
+    selektor - ovo je input sa atributom name koji je fav_lang... da je
+    checked. Ako stavis da je selektor "p.nameOfClass" to je paragraph sa tom klasom, [] je za ima atributa selektora, tipa "a[target] " , id je "#id"  */
+    var selected = document.querySelector('input[name="fav_language"]:checked');
+    parag_sel.innerHTML = "You have selected: "+ selected.value;
+}
+
+// rotiranje slike s dugmetom. 
+var rotateNumber = 0;
+$(".animate_img").click(function(){
+    //mora se dodati ova promenljiva jer se pomera sa proslog polozaja sa transform
+    rotateNumber +=1;
+    var rotateImg = (180 * rotateNumber) +'deg';
+    console.log(rotateImg);
+    //u ovoj rotate css funkciji mora promenlj iz js bez navodnika
+    $(".img_hello").css({transform: ' rotate('+rotateImg+')'});
+});
+
+//const i let
+
 </script>
 
 </body>
